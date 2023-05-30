@@ -1,0 +1,92 @@
+<div class="container-fluid">
+  <div class="block-header">
+    <div class="row">
+      <div class="col-lg-5 col-md-8 col-sm-12">
+        <h2>
+          <a
+            href="javascript:void(0);"
+            class="btn btn-xs btn-link btn-toggle-fullwidth"
+            (click)="toggleFullWidth()"
+          >
+            <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
+            <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i> </a
+          >Juegos
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <div class="col-lg-12 col-md-12">
+      <div class="card">
+        <div class="body">
+          <h3>¿Qué juego estás buscando?</h3>
+          <form #profileForm="ngForm" (ngSubmit)="onSubmit(profileForm.valid)">
+            <input
+              placeholder="Ej: Wingspan"
+              [(ngModel)]="gameSearch.name"
+              class="form-control custom-input"
+              name="text"
+              #text="ngModel"
+              required
+              [ngClass]="{
+                'parsley-error':
+                  !text.valid && (text.touched || profileForm.submitted)
+              }"
+            />
+            <ul
+              class="parsley-errors-list filled"
+              *ngIf="!text.valid && (text.touched || profileForm.submitted)"
+            >
+              <li class="parsley-required" *ngIf="text.hasError('required')">
+                Debe ingresar el nombre de un juego.
+              </li>
+            </ul>
+          </form>
+          <div class="container">
+            <div
+              class="row justify-content-between"
+              style="justify-content: space-between"
+            >
+              <div class="col-lg-12 col-md-12 justify-content-between">
+                <div
+                  class="card product_item col-lg-3 col-md-3"
+                  style="margin: 20px"
+                  *ngFor="let game of games"
+                >
+                  <div class="body">
+                    <div class="top-bar">
+                      <span>{{ game?.year_published }}</span>
+                      <a
+                        *ngIf="game.rules_url"
+                        target="_blank"
+                        href="{{ game.rules_url }}"
+                        ><span class="float-right fa-book"> </span
+                      ></a>
+                    </div>
+                    <img src="{{ game?.images.medium }}" class="img-fluid" />
+                    <div class="title">
+                      {{ game?.name }}
+                      <a [routerLink]="'/admin/games/game-detail/' + game.id"
+                        ><span class="icon-eye float-right"></span
+                      ></a>
+                    </div>
+                    <hr />
+                    <div class="footer">
+                      <span class="badge badge-default">{{
+                        game?.primary_publisher.name
+                      }}</span>
+                      <span class="badge badge-default">{{
+                        game?.primary_designer.name
+                      }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

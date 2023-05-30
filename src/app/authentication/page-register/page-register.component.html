@@ -1,0 +1,113 @@
+<div id="wrapper auth">
+  <div class="vertical-align-wrap">
+    <div class="auth_frame"></div>
+    <div class="vertical-align-middle auth-main">
+      <div class="auth-box">
+        <div class="top">
+          <img src="assets/images/logo-white.png" alt="Lucid" />
+        </div>
+        <div class="card">
+          <div class="header">
+            <p class="lead">Crear una cuenta</p>
+          </div>
+          <div class="body">
+            <form
+              class="form-auth-small"
+              #registrationForm="ngForm"
+              (ngSubmit)="onSubmit()"
+            >
+              <div class="form-group">
+                <label for="signup-email" class="control-label sr-only"
+                  >E-mail</label
+                >
+
+                <input
+                  type="email"
+                  class="form-control"
+                  required
+                  id="signup-email"
+                  placeholder="Email"
+                  [(ngModel)]="user.email"
+                  name="email"
+                  #email="ngModel"
+                  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                  [ngClass]="{
+                    'parsley-error':
+                      !email.valid &&
+                      (email.touched || registrationForm.submitted)
+                  }"
+                />
+                <ul
+                  class="parsley-errors-list filled"
+                  *ngIf="
+                    !email.valid &&
+                    (email.touched || registrationForm.submitted)
+                  "
+                >
+                  <li
+                    class="parsley-required"
+                    *ngIf="email.hasError('required')"
+                  >
+                    Este valor es requerido.
+                  </li>
+                  <li class="parsley-type" *ngIf="email.hasError('pattern')">
+                    Este valor debe ser en formato email.
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <label for="signup-password" class="control-label sr-only"
+                  >Password</label
+                >
+
+                <input
+                  type="password"
+                  [(ngModel)]="user.password"
+                  class="form-control"
+                  id="signup-password"
+                  placeholder="Password"
+                  name="text"
+                  #text="ngModel"
+                  required
+                  [ngClass]="{
+                    'parsley-error':
+                      !text.valid &&
+                      (text.touched || registrationForm.submitted)
+                  }"
+                />
+                <ul
+                  class="parsley-errors-list filled"
+                  *ngIf="
+                    !text.valid && (text.touched || registrationForm.submitted)
+                  "
+                >
+                  <li
+                    class="parsley-required"
+                    *ngIf="text.hasError('required')"
+                  >
+                    Este valor es requerido.
+                  </li>
+                </ul>
+              </div>
+              <button
+                [disabled]="registrationForm.invalid"
+                type="submit"
+                class="btn btn-primary btn-lg btn-block"
+              >
+                REGISTRAR
+              </button>
+              <div class="bottom">
+                <span class="helper-text"
+                  >Ya tenes una cuenta?
+                  <a [routerLink]="['/authentication/page-login']"
+                    >Login</a
+                  ></span
+                >
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

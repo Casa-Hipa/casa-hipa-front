@@ -1,0 +1,6 @@
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error {
+  background-color: #fbf5f5;
+  border-color: darken(#fbf5f5, 8%);
+}

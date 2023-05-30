@@ -1,0 +1,193 @@
+<div class="container-fluid">
+  <div class="block-header">
+    <div class="row">
+      <div class="col-lg-5 col-md-8 col-sm-12">
+        <h2>
+          <a
+            href="javascript:void(0);"
+            class="btn btn-xs btn-link btn-toggle-fullwidth"
+            (click)="toggleFullWidth()"
+          >
+            <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
+            <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
+          </a>
+          Preguntas Frecuentes (FAQs)
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <div class="card">
+      <div class="body">
+        <h6 class="p-10 bg-info text-light">General</h6>
+        <div class="accordion custom" id="accordion">
+          <div>
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button
+                  class="btn btn-link collapsed"
+                  type="button"
+                  (click)="toggleCollepseGeneral('collapseOne')"
+                >
+                  ¿Que es Casa Hipa?
+                </button>
+              </h5>
+            </div>
+            <div
+              class="collapse"
+              [ngClass]="{ show: collepse == 'collapseOne' }"
+            >
+              <div class="card-body">
+                Casa Hipa es un acogedor club de juegos de mesa ubicado en el
+                ciudad de Córdoba, Argentina. Nuestro objetivo es crear un
+                espacio único donde los amantes de los juegos de mesa puedan
+                reunirse, divertirse y explorar un mundo lleno de emocionantes
+                aventuras lúdicas.
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button
+                  class="btn btn-link collapsed"
+                  type="button"
+                  (click)="toggleCollepseGeneral('collapseTwo')"
+                >
+                  ¿Cual es el objetivo de este sitio web?
+                </button>
+              </h5>
+            </div>
+            <div
+              class="collapse"
+              [ngClass]="{ show: collepse == 'collapseTwo' }"
+            >
+              <div class="card-body">
+                El principal objetivo de nuestro sitio web, es que puedas
+                conocer nuestras actividades y registrarte a nuestros eventos.
+                Tambien te invitamos a usar el sitio para buscar informacion
+                diversos juegos de mesa, registrarlo en tu colección de juegos,
+                y tambien acceder a nuestra tienda donde podras comprar juegos
+                de mesa modernos, accesorios para los mismos y más!
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="card-header" id="headingThree">
+              <h5 class="mb-0">
+                <button
+                  class="btn btn-link collapsed"
+                  type="button"
+                  (click)="toggleCollepseGeneral('collapseThree')"
+                >
+                  ¿Como puedo contactarme con ustedes?
+                </button>
+              </h5>
+            </div>
+            <div
+              class="collapse"
+              [ngClass]="{ show: collepse == 'collapseThree' }"
+            >
+              <div class="card-body">
+                Correo electrónico: info@casahipa.com <br />
+                Teléfono: +1 (555) 123-4567 <br />
+                Redes sociales:<br />
+                Facebook: @casahipa <br />Twitter: @casahipa <br />
+                Instagram: @casahipa <br />
+                Página web: www.casahipa.com <br />
+                Dirección física: 123<br />
+                Calle del Juego, Ciudad de Córdoba, Argentina
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="m-t-50"></div>
+
+        <h6 class="p-10 bg-warning text-light">Tienda de juegos</h6>
+        <div class="accordion custom" id="accordion1">
+          <div>
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button
+                  class="btn btn-link collapsed"
+                  type="button"
+                  (click)="toggleCollepseGeneral('collapseOne1')"
+                >
+                  ¿Cuál es el tiempo de entrega de los juegos de mesa?
+                </button>
+              </h5>
+            </div>
+            <div
+              class="collapse"
+              [ngClass]="{ show: collepse == 'collapseOne1' }"
+            >
+              <div class="card-body">
+                El tiempo de entrega puede variar según tu ubicación y el método
+                de envío seleccionado. Por lo general, intentamos procesar y
+                enviar los pedidos en un plazo de 1 a 3 días hábiles. Una vez
+                enviado, el tiempo de entrega estimado es de 3 a 7 días hábiles
+                dentro del país.
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button
+                  class="btn btn-link collapsed"
+                  type="button"
+                  (click)="toggleCollepseGeneral('collapseTwo2')"
+                >
+                  ¿Cuál es la política de devoluciones y reembolsos?
+                </button>
+              </h5>
+            </div>
+            <div
+              class="collapse"
+              [ngClass]="{ show: collepse == 'collapseTwo2' }"
+            >
+              <div class="card-body">
+                Nuestra política de devoluciones y reembolsos te brinda la
+                opción de devolver los juegos de mesa no abiertos y en perfecto
+                estado dentro de los 14 días posteriores a la entrega. Una vez
+                que recibamos el artículo devuelto, emitiremos un reembolso
+                completo. Para obtener más detalles, te recomendamos consultar
+                nuestra página de "Políticas de Devolución" en nuestro sitio
+                web.
+              </div>
+            </div>
+            <div>
+              <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                  <button
+                    class="btn btn-link collapsed"
+                    type="button"
+                    (click)="toggleCollepseGeneral('collapseThree3')"
+                  >
+                    ¿Ofrecen juegos de mesa para diferentes edades y niveles de
+                    habilidad?
+                  </button>
+                </h5>
+              </div>
+              <div
+                class="collapse"
+                [ngClass]="{ show: collepse == 'collapseThree3' }"
+              >
+                <div class="card-body">
+                  Sí, en nuestra tienda online ofrecemos una amplia variedad de
+                  juegos de mesa para diferentes edades y niveles de habilidad.
+                  Contamos con opciones para niños, adolescentes y adultos, así
+                  como juegos tanto para principiantes como para jugadores más
+                  experimentados. Puedes explorar nuestras categorías de juegos
+                  o utilizar los filtros de búsqueda en nuestro sitio web para
+                  encontrar los juegos adecuados para ti o tus seres queridos.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

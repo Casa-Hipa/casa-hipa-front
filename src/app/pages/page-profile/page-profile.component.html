@@ -1,0 +1,480 @@
+<div class="container-fluid">
+  <div class="block-header">
+    <div class="row">
+      <div class="col-lg-5 col-md-8 col-sm-12">
+        <h2>
+          <a
+            href="javascript:void(0);"
+            class="btn btn-xs btn-link btn-toggle-fullwidth"
+            (click)="toggleFullWidth()"
+          >
+            <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
+            <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
+          </a>
+          Perfil de Usuario
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-toggle="tab"
+                [routerLink]="['/admin/pages/page-profile']"
+                fragment="settings"
+                [ngClass]="{ active: fragment == 'settings' }"
+                >Perfil</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-toggle="tab"
+                [routerLink]="['/admin/pages/page-profile']"
+                fragment="collections"
+                [ngClass]="{ active: fragment == 'collections' }"
+                >Tu Colección</a
+              >
+            </li>
+            <li *ngIf="isAdmin" class="nav-item">
+              <a
+                class="nav-link"
+                data-toggle="tab"
+                [routerLink]="['/admin/pages/page-profile']"
+                fragment="store"
+                [ngClass]="{ active: fragment == 'store' }"
+                >Tu Tienda</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="tab-content">
+          <div class="tab-pane" [ngClass]="{ active: fragment == 'settings' }">
+            <div class="body">
+              <h6>Foto de perfil</h6>
+              <div class="media">
+                <div class="media-left m-r-15">
+                  <img
+                    class="user-photo media-object"
+                    alt="User"
+                    id="mi-imagen"
+                    [src]="transform()"
+                    style="width: 100px"
+                  />
+                </div>
+                <div class="media-body">
+                  <p>
+                    Subi tu foto de perfil. <br />
+                    <em>Por lo menos debe ser de 140px x 140px</em>
+                  </p>
+                  <button
+                    type="button"
+                    class="btn btn-default-dark"
+                    id="btn-upload-photo"
+                  >
+                    Subir foto
+                  </button>
+                  <input
+                    (change)="handleFileInput($event)"
+                    type="file"
+                    id="filePhoto"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="body">
+              <h6>Informacion básica</h6>
+              <div class="row clearfix">
+                <div class="col-lg-6 col-md-12">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Nombre"
+                      name="nombre"
+                      [(ngModel)]="perfil.nombre"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Apellido"
+                      name="apellido"
+                      [(ngModel)]="perfil.apellido"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <div>
+                      <select
+                        class="form-control"
+                        name="opcion_alimenticia"
+                        name="apellido"
+                        [(ngModel)]="perfil.id_dieta"
+                      >
+                        <option value="0">Opcion Alimenticia</option>
+                        <option value="1">Omnivoro</option>
+                        <option value="2">Vegetariano</option>
+                        <option value="3">Vegano</option>
+                        <option value="4">Sin Gluten</option>
+                        <option value="5">Sin Lactosa</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"
+                          ><i class="icon-calendar"
+                            >  Fecha de nacimiento</i
+                          ></span
+                        >
+                      </div>
+                      <input
+                        type="date"
+                        data-provide="datepicker"
+                        data-date-autoclose="true"
+                        class="form-control"
+                        placeholder="Fecha de nacimiento"
+                        name="fecha_nacimiento"
+                        [(ngModel)]="perfil.fecha_nacimiento"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <a
+                        target="_blank"
+                        href="https://www.instagram.com/{{ perfil.instagram }}"
+                      >
+                        <span class="input-group-text" id="basic-addon3"
+                          >https://www.instagram.com/</span
+                        ></a
+                      >
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="ig-url"
+                      aria-describedby="basic-addon3"
+                      name="ig"
+                      [(ngModel)]="perfil.instagram"
+                    />
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <a
+                        target="_blank"
+                        href="https://www.facebook.com/{{ perfil.facebook }}"
+                      >
+                        <span class="input-group-text" id="basic-addon3"
+                          >https://www.facebook.com/</span
+                        ></a
+                      >
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="fb-url"
+                      aria-describedby="basic-addon3"
+                      name="fb"
+                      [(ngModel)]="perfil.facebook"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Telefono"
+                      name="telefono"
+                      [(ngModel)]="perfil.telefono"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="email"
+                      [(ngModel)]="perfil.email"
+                      disabled
+                      placeholder="Email"
+                    />
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary" (click)="update()">
+                Actualizar
+              </button>
+            </div>
+
+            <div class="body">
+              <div class="row clearfix">
+                <div class="col-lg-6 col-md-12">
+                  <h6>Cambiar Password</h6>
+                  <div class="form-group">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Password actual"
+                      name="password"
+                      [(ngModel)]="changePass.password"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Nueva password"
+                      name="passwordnuevo"
+                      [(ngModel)]="changePass.nuevapassword"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Confirmar nueva password"
+                      name="nuevapassword2"
+                      [(ngModel)]="changePass.nuevapassword2"
+                    />
+                  </div>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="changePassword()"
+              >
+                Cambiar</button
+              >&nbsp;&nbsp;
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="desactivarUsuario()"
+              >
+                Desactivar Usuario
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane"
+            [ngClass]="{ active: fragment == 'collections' }"
+          >
+            <div class="row clearfix">
+              <div class="col-lg-12 col-md-12">
+                <div class="card">
+                  <div class="body project_report">
+                    <div class="table-responsive">
+                      <table class="table m-b-0 table-hover">
+                        <thead class="thead-light">
+                          <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Edades</th>
+                            <th>Duracion</th>
+                            <th>Diseñador Principal</th>
+                            <th>Editorial Principal</th>
+                            <th>Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let juego of coleccion">
+                            <td>
+                              <img [src]="juego.images.thumb" alt="" />
+                            </td>
+                            <td class="project-title">
+                              <h6>
+                                <a
+                                  href="javascript:void(0);"
+                                  (click)="abrirPagina(juego.official_url)"
+                                  >{{ juego.name }}</a
+                                >
+                              </h6>
+                              <small
+                                >Publicado en {{ juego.year_published }}</small
+                              >
+                            </td>
+
+                            <td>
+                              <h6>{{ juego.players }} años</h6>
+                            </td>
+                            <td>
+                              <h6>{{ juego.playtime }} minutos</h6>
+                            </td>
+                            <td>
+                              <h6>{{ juego.primary_designer.name }}</h6>
+                            </td>
+                            <td>
+                              <h6>{{ juego.primary_publisher.name }}</h6>
+                            </td>
+                            <td class="project-actions">
+                              <a
+                                href="javascript:void(0);"
+                                (click)="obtenerDetalle(juego.id)"
+                                class="btn btn-outline-secondary mr-1"
+                                ><i class="icon-eye"></i
+                              ></a>
+                              <a
+                                (click)="borrarJuegoColeccion(juego.id)"
+                                href="javascript:void(0);"
+                                class="btn btn-outline-secondary"
+                                ><i class="icon-trash"></i
+                              ></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            *ngIf="isAdmin"
+            class="tab-pane"
+            [ngClass]="{ active: fragment == 'store' }"
+          >
+            <div class="row clearfix">
+              <div class="col-lg-12 col-md-12">
+                <div class="card">
+                  <div class="body project_report">
+                    <div class="table-responsive">
+                      <table class="table m-b-0 table-hover">
+                        <thead class="thead-light">
+                          <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Edades</th>
+                            <th>Duracion</th>
+                            <th>Stock</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let juego of storeGames">
+                            <td>
+                              <img
+                                [src]="juego.images.thumb"
+                                alt=""
+                                style="width: 35px"
+                              />
+                            </td>
+                            <td class="project-title">
+                              <h6>
+                                <a
+                                  href="javascript:void(0);"
+                                  (click)="abrirPagina(juego.official_url)"
+                                  >{{ juego.name }}</a
+                                >
+                              </h6>
+                              <small
+                                >Publicado en {{ juego.year_published }}</small
+                              >
+                            </td>
+
+                            <td>
+                              <h6>{{ juego.players }} años</h6>
+                            </td>
+                            <td>
+                              <h6>{{ juego.playtime }} minutos</h6>
+                            </td>
+                            <td>
+                              <h6>{{ juego.stock }}</h6>
+                            </td>
+                            <td>
+                              <h6>{{ juego.precio }}</h6>
+                            </td>
+                            <td class="project-actions">
+                              <a
+                                href="javascript:void(0);"
+                                (click)="
+                                  openModal(
+                                    juego.id,
+                                    content,
+                                    'md',
+                                    juego.stock,
+                                    juego.precio
+                                  )
+                                "
+                                class="btn btn-outline-secondary mr-1"
+                                ><i class="icon-pencil"></i
+                              ></a>
+                              <!-- <a
+                                (click)="borrarJuegoColeccion(juego.id)"
+                                href="javascript:void(0);"
+                                class="btn btn-outline-secondary"
+                                ><i class="icon-trash"></i
+                              ></a> -->
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Modificar Stock y Precio</h4>
+  </div>
+  <div class="modal-body">
+    <div class="card">
+      <div class="body">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Stock</label>
+            <input
+              name="stock"
+              type="text"
+              class="form-control"
+              id="stock"
+              [(ngModel)]="stock"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Precio</label>
+            <input
+              name="precio"
+              type="number"
+              class="form-control"
+              id="precio"
+              [(ngModel)]="precio"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="modificarJuego()">
+      Modificar
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="modal.dismiss('Close click')"
+    >
+      Cerrar
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,181 @@
+<div class="container-fluid blog-page">
+  <div class="block-header">
+    <div class="row">
+      <div class="col-lg-5 col-md-8 col-sm-12">
+        <h2>
+          <a
+            href="javascript:void(0);"
+            class="btn btn-xs btn-link btn-toggle-fullwidth"
+            (click)="toggleFullWidth()"
+          >
+            <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
+            <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
+          </a>
+          Entradas blog
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <div class="col-lg-8 col-md-12 left-box">
+      <div class="card single_post" *ngFor="let entrada of entradas">
+        <div class="body">
+          <div class="img-post">
+            <!-- <img
+              class="d-block img-fluid"
+              src="https://c1.wallpaperflare.com/preview/523/21/80/board-game-fun-game-hands.jpg"
+            /> -->
+          </div>
+          <h3>
+            {{ entrada.titulo }}
+          </h3>
+          <p [innerHTML]="entrada.parrafo"></p>
+        </div>
+        <div class="footer">
+          <div class="actions">
+            <!-- <a
+              href="#"
+              onclick="checkout()"
+              class="btn btn-outline-secondary"
+              *ngIf="entrada.precio || entrada.precio > 0"
+              >Registrarme a Evento!</a
+            > -->
+            <button
+              type="button"
+              (click)="checkout(entrada)"
+              class="btn btn-outline-secondary"
+              *ngIf="entrada.precio || entrada.precio > 0"
+            >
+              Registrarme a Evento!
+            </button>
+          </div>
+          <ul class="stats">
+            <li>{{ entrada.categoria }}</li>
+            <li>
+              {{ entrada.nombre + " " + entrada.apellido }}
+            </li>
+            <li>{{ entrada.fecha | date : "dd/MM/yyyy HH:mm:ss" }}</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- <ul class="pagination pagination-primary">
+        <li class="page-item">
+          <a class="page-link" href="javascript:void(0);">Previous</a>
+        </li>
+        <li class="page-item active">
+          <a class="page-link" href="javascript:void(0);">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="javascript:void(0);">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="javascript:void(0);">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="javascript:void(0);">Next</a>
+        </li>
+      </ul> ver paginacion luego-->
+    </div>
+    <div class="col-lg-4 col-md-12 right-box">
+      <div class="card">
+        <div class="body search">
+          <div class="input-group m-b-0">
+            <div class="input-group-prepend">
+              <span class="input-group-text"
+                ><i class="icon-magnifier"></i
+              ></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Buscar..." />
+          </div>
+        </div>
+      </div>
+
+      <!-- LightWidget WIDGET -->
+      <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+      <iframe
+        src="//lightwidget.com/widgets/d5c3a4f08b0752d98776f174645f39fd.html"
+        scrolling="no"
+        allowtransparency="true"
+        class="lightwidget-widget"
+        style="width: 100%; border: 0; overflow: hidden; height: 100%"
+      ></iframe>
+      <!-- <div class="card">
+        <div class="header">
+          <h2>Instagram Casa Hipa!</h2>
+        </div>
+        <div class="body widget">
+
+          <ul class="list-unstyled instagram-plugin m-b-0">
+            <li>
+              <a href="javascript:void(0);"
+                ><img
+                  src="assets/images/blog/05-img.jpg"
+                  alt="image description"
+              /></a>
+            </li>
+            <li>
+              <a href="javascript:void(0);"
+                ><img
+                  src="assets/images/blog/06-img.jpg"
+                  alt="image description"
+              /></a>
+            </li>
+            <li>
+              <a href="javascript:void(0);"
+                ><img
+                  src="assets/images/blog/07-img.jpg"
+                  alt="image description"
+              /></a>
+            </li>
+            <li>
+              <a href="javascript:void(0);"
+                ><img
+                  src="assets/images/blog/08-img.jpg"
+                  alt="image description"
+              /></a>
+            </li>
+            <li>
+              <a href="javascript:void(0);"
+                ><img
+                  src="assets/images/blog/09-img.jpg"
+                  alt="image description"
+              /></a>
+            </li>
+            <li>
+              <a href="javascript:void(0);"
+                ><img
+                  src="assets/images/blog/10-img.jpg"
+                  alt="image description"
+              /></a>
+            </li>
+            <li>
+              <a href="javascript:void(0);"
+                ><img
+                  src="assets/images/blog/11-img.jpg"
+                  alt="image description"
+              /></a>
+            </li>
+            <li>
+              <a href="javascript:void(0);"
+                ><img
+                  src="assets/images/blog/12-img.jpg"
+                  alt="image description"
+              /></a>
+            </li>
+            <li>
+              <a href="javascript:void(0);"
+                ><img
+                  src="assets/images/blog/13-img.jpg"
+                  alt="image description"
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- LightWidget WIDGET -->
+<script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>

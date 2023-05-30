@@ -1,0 +1,83 @@
+<div class="container-fluid">
+  <div class="block-header">
+    <div class="row">
+      <div class="col-lg-5 col-md-8 col-sm-12">
+        <h2>
+          <a
+            href="javascript:void(0);"
+            class="btn btn-xs btn-link btn-toggle-fullwidth"
+            (click)="toggleFullWidth()"
+          >
+            <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
+            <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i> </a
+          >Juegos
+        </h2>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="body">
+      <div class="row">
+        <div class="preview col-lg-4 col-md-12">
+          <div class="preview-pic tab-content">
+            <div class="tab-pane active">
+              <img src="{{ this.game.images.large }}" class="img-fluid" />
+            </div>
+          </div>
+        </div>
+        <div class="details col-lg-8 col-md-12">
+          <h3 class="product-title m-b-0">{{ this.game.name }}</h3>
+          <div class="row">
+            <small class="text-muted m-t-2 mr-3">
+                   {{ this.game.year_published }}</small
+            ><small class="text-muted m-t-2 mr-3"
+              >{{ this.game.players }} Jugadores</small
+            ><small class="text-muted m-t-2 mr-3"
+              >{{ this.game.playtime }} Minutos</small
+            >
+          </div>
+          <hr />
+          <p
+            class="product-description"
+            [innerHTML]="this.game.description"
+          ></p>
+
+          <hr />
+          <div class="action">
+            <button
+              [disabled]="!this.game.official_url"
+              (click)="abrirPagina(this.game.official_url)"
+              type="button"
+              class="btn btn-outline-info mr-1"
+            >
+              <i class="icon-globe"></i> Sitio Oficial
+            </button>
+            <button
+              [disabled]="!this.game.rules_url"
+              (click)="abrirReglas(this.game.rules_url)"
+              type="button"
+              class="btn btn-outline-info mr-1"
+            >
+              <i class="icon-notebook"></i> Reglamento
+            </button>
+            <button
+              *ngIf="isAdmin"
+              (click)="agregarStore(this.game.id)"
+              type="button"
+              class="btn btn-outline-danger mr-1 float-right"
+            >
+              <i class="icon-fire"></i> Agregar a tu sección de venta!
+            </button>
+            <button
+              (click)="agregarColeccion(this.game.id)"
+              type="button"
+              class="btn btn-outline-warning mr-1 float-right"
+            >
+              <i class="icon-star"></i> Agregar a tu colección!
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,106 @@
+<link href="https://cdn.syncfusion.com/ej2/material.css" rel="stylesheet" />
+<div class="container-fluid">
+  <div class="block-header">
+    <div class="row">
+      <div class="col-lg-5 col-md-8 col-sm-12">
+        <h2>
+          <a
+            href="javascript:void(0);"
+            class="btn btn-xs btn-link btn-toggle-fullwidth"
+            (click)="toggleFullWidth()"
+          >
+            <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
+            <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
+          </a>
+          Nueva Entrada
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="body">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ingrese un título para su entrada"
+              name="titulo"
+              [(ngModel)]="entrada.titulo"
+            />
+          </div>
+          <div class="form-group">
+            <select
+              class="form-control show-tick col-4"
+              name="categoria"
+              [(ngModel)]="entrada.categoria"
+            >
+              <option>Seleccionar categoría</option>
+              <option value="Evento">Evento</option>
+              <option value="Novedades">Novedades</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <input
+              *ngIf="entrada.categoria == 'Evento'"
+              type="number"
+              class="form-control col-lg-4"
+              placeholder="Ingrese precio para su evento"
+              name="precio"
+              [(ngModel)]="entrada.precio"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              *ngIf="entrada.categoria == 'Evento'"
+              type="date"
+              class="form-control col-lg-4"
+              name="fecha_inicio"
+              [(ngModel)]="entrada.fecha_inicio"
+            />
+          </div>
+          <div class="form-group m-t-20 m-b-20">
+            <input
+              name="imagen_ruta"
+              type="file"
+              class="form-control-file"
+              id="exampleInputFile"
+              aria-describedby="fileHelp"
+              [(ngModel)]="entrada.imagen_ruta"
+            />
+            <small id="fileHelp" class="form-text text-muted"
+              >Aca voy a tener que poner el limite de las dimensiones de la
+              imagen a subir.</small
+            >
+          </div>
+
+          <!-- <textarea
+            name="parrafo"
+            class="form-control"
+            aria-label="With textarea"
+            rows="8"
+            [(ngModel)]="entrada.parrafo"
+          ></textarea> -->
+
+          <ejs-richtexteditor
+            #toolsRTE
+            id="alltoolRTE"
+            [toolbarSettings]="config"
+            [innerHTML]="entrada.parrafo"
+          ></ejs-richtexteditor>
+
+          <button
+            type="button"
+            class="btn btn-block btn-primary m-t-20"
+            (click)="registrar()"
+          >
+            Registrar Entrada
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
