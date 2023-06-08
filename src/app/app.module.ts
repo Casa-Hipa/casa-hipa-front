@@ -23,6 +23,7 @@ import { CalcularEdadPipe } from './pipes/calcular-edad.pipe';
 import { ListadoTiendaComponent } from './tienda/listado-tienda/listado-tienda.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
+
 FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin]);
 
 @NgModule({

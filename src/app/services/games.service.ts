@@ -66,4 +66,8 @@ export class GamesService {
       { headers, body: coleccion }
     );
   }
+
+  createFactura(factura: any): Observable<any> {
+    return this._http.post<any>(`http://localhost:3000/store/createFactura`, factura);
+  }
 }

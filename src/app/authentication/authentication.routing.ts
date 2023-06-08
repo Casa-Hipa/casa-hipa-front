@@ -11,6 +11,7 @@ import { PageTryLaterComponent } from './page-try-later/page-try-later.component
 import { PageMaintananceComponent } from '../pages/page-maintanance/page-maintanance.component';
 import { ErrorPaymentComponent } from './error-payment/error-payment.component';
 import { SuccessPaymentComponent } from './success-payment/success-payment.component';
+import { SuccessSellComponent } from './success-sell/success-sell.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,11 @@ const routes: Routes = [
         path: 'success-payment',
         component: SuccessPaymentComponent,
         data: { title: ':: Casa Hipa :: Sucess Payment ::' },
+      },
+      {
+        path: 'success-sell',
+        component: SuccessSellComponent,
+        data: { title: ':: Casa Hipa :: Sucess Sell ::' },
       },
       {
         path: 'error-payment',

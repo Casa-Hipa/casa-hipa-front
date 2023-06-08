@@ -13,6 +13,7 @@ import { PageTryLaterComponent } from './page-try-later/page-try-later.component
 import { PagesModule } from '../pages/pages.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SuccessSellComponent } from './success-sell/success-sell.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PageForbiddonErrorComponent,
     PageIsErrorComponent,
     PageTryLaterComponent,
+    SuccessSellComponent,
   ],
   imports: [
     CommonModule,

@@ -97,6 +97,13 @@ export class EventService {
     );
   }
 
+  public ventaTienda(checkoutEvent: CheckoutEvent): Observable<any> {
+    return this._http.post<any>(
+      'http://localhost:3000/utils/ventaTienda',
+      checkoutEvent
+    );
+  }
+
   public registrarAsistente(asistente: Asistente): Observable<any> {
     return this._http.post<any>(
       'http://localhost:3000/eventos/registrar_asistente',
