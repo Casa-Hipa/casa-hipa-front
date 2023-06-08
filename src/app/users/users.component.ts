@@ -12,6 +12,9 @@ import { User, UserLogin } from '../interfaces/user';
 export class UsersComponent implements OnInit {
   public sidebarVisible: boolean = true;
   usuarios: any = [];
+  usuariosFiltrados: any = [];
+  busqueda = ''
+  public currentPage = 1
   constructor(
     private sidebarService: SidebarService,
     private cdr: ChangeDetectorRef,
@@ -21,7 +24,9 @@ export class UsersComponent implements OnInit {
     this.userService.getUsuarios().subscribe({
       next: (users) => {
         this.usuarios = users.data;
-        console.log(this.usuarios);
+        this.usuariosFiltrados = this.usuarios
+
+        console.log(this.usuarios)
       },
     });
   }
@@ -39,5 +44,13 @@ export class UsersComponent implements OnInit {
         this.router.navigate['/admin/pages/page-profile2'];
       },
     });
+  }
+
+  filtrarBusqueda(){
+    this.usuariosFiltrados = this.usuarios.filter(item =>{
+      
+        return ( item.nombre?.toLowerCase().includes(this.busqueda.toLowerCase()) || item.apellido?.toLowerCase().includes(this.busqueda.toLowerCase()) || item.email?.toLowerCase().includes(this.busqueda.toLowerCase()) ||item.telefono?.toLowerCase().includes(this.busqueda.toLowerCase()) )
+       
+    })
   }
 }

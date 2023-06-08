@@ -21,6 +21,7 @@ import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
 import { CalcularEdadPipe } from './pipes/calcular-edad.pipe';
 import { ListadoTiendaComponent } from './tienda/listado-tienda/listado-tienda.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin]);
 
@@ -41,6 +42,7 @@ FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin]);
     NgxEchartsModule,
     SweetAlert2Module.forRoot(),
     FormsModule,
+    NgxPaginationModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

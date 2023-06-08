@@ -271,7 +271,9 @@
             [ngClass]="{ active: fragment == 'collections' }"
           >
             <div class="row clearfix">
+
               <div class="col-lg-12 col-md-12">
+                <input  type="text" class="form-control mb-3 col-3" name="busqueda" placeholder="Buscar Titulo..." [(ngModel)]="busqueda" (input)="filtrarBusqueda()" />
                 <div class="card">
                   <div class="body project_report">
                     <div class="table-responsive">
@@ -288,7 +290,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let juego of coleccion">
+                          <tr *ngFor="let juego of coleccionFiltrados | paginate:{itemsPerPage:4, currentPage:currentPage, id:'miTabla'}">
                             <td>
                               <img [src]="juego.images.thumb" alt="" />
                             </td>
@@ -332,8 +334,10 @@
                               ></a>
                             </td>
                           </tr>
+                          
                         </tbody>
                       </table>
+                      <pagination-controls (pageChange)="currentPage = $event" id="miTabla"></pagination-controls>
                     </div>
                   </div>
                 </div>
@@ -348,6 +352,7 @@
           >
             <div class="row clearfix">
               <div class="col-lg-12 col-md-12">
+                <input  type="text" class="form-control mb-3 col-3" name="busqueda2" placeholder="Buscar Titulo..." [(ngModel)]="busqueda2" (input)="filtrarBusqueda2()" />
                 <div class="card">
                   <div class="body project_report">
                     <div class="table-responsive">
@@ -364,7 +369,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let juego of storeGames">
+                          <tr *ngFor="let juego of storeGamesFiltrados | paginate:{itemsPerPage:4, currentPage:currentPage2, id:'miTabla2'}">
                             <td>
                               <img
                                 [src]="juego.images.thumb"
@@ -395,7 +400,7 @@
                               <h6>{{ juego.stock }}</h6>
                             </td>
                             <td>
-                              <h6>{{ juego.precio }}</h6>
+                              <h6>{{ juego.precio | currency }}</h6>
                             </td>
                             <td class="project-actions">
                               <a
@@ -420,8 +425,11 @@
                               ></a> -->
                             </td>
                           </tr>
+                          
                         </tbody>
+                        
                       </table>
+                      <pagination-controls (pageChange)="currentPage2 = $event" id="miTabla2"></pagination-controls>
                     </div>
                   </div>
                 </div>

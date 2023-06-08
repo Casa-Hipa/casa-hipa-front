@@ -98,6 +98,7 @@
         <div class="tab-pane" [ngClass]="{ active: activeTab == 'Overview' }">
           <div class="row clearfix">
             <div class="col-lg-12 col-md-12">
+              <input  type="text" class="form-control mb-3 col-3" name="busqueda2" placeholder="Buscar..." [(ngModel)]="busqueda2" (input)="filtrarBusqueda2()" />
               <div class="card">
                 <div class="body project_report">
                   <div class="table-responsive">
@@ -111,7 +112,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let evento of eventos">
+                        <tr *ngFor="let evento of eventosFiltrados | paginate:{itemsPerPage:4, currentPage:currentPage, id:'miTabla'}">
                           <td>
                             <h6>{{ evento.titulo }}</h6>
                           </td>
@@ -130,8 +131,11 @@
                             <h6>{{ evento.limite_asistentes }}</h6>
                           </td>
                         </tr>
+                        
                       </tbody>
                     </table>
+                    
+                    <pagination-controls (pageChange)="currentPage = $event" id="miTabla"></pagination-controls>
                   </div>
                 </div>
               </div>
@@ -142,6 +146,7 @@
         <div class="tab-pane" [ngClass]="{ active: activeTab == 'Settings' }">
           <div class="row clearfix">
             <div class="col-lg-12 col-md-12">
+              <input  type="text" class="form-control mb-3 col-3" name="busqueda" placeholder="Buscar Titulo..." [(ngModel)]="busqueda" (input)="filtrarBusqueda()" />
               <div class="card">
                 <div class="body project_report">
                   <div class="table-responsive">
@@ -157,7 +162,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let juego of coleccion">
+                        <tr *ngFor="let juego of coleccionFiltrados | paginate:{itemsPerPage:4, currentPage:currentPage2, id:'miTabla2'}">
                           <td>
                             <img [src]="juego.images.thumb" alt="" />
                           </td>
@@ -190,8 +195,10 @@
                             ></a>
                           </td>
                         </tr>
+                        
                       </tbody>
                     </table>
+                    <pagination-controls (pageChange)="currentPage2 = $event" id="miTabla2"></pagination-controls>
                   </div>
                 </div>
               </div>

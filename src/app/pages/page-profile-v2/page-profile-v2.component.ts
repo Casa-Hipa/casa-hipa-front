@@ -21,7 +21,14 @@ export class PageProfileV2Component implements OnInit {
   public user = {} as any;
   public coleccion = [];
   public eventos = [];
+
+  public coleccionFiltrados = [];
+  public eventosFiltrados = [];
   base64String: any;
+  public currentPage = 1
+  public currentPage2 = 1
+  public busqueda = ''
+  public busqueda2 = '' 
   public coleccionSearch = {} as ColleccionSearch;
   constructor(
     private sidebarService: SidebarService,
@@ -45,6 +52,7 @@ export class PageProfileV2Component implements OnInit {
               this.gameService.getJuegosBGAbyID(result.data).subscribe({
                 next: (games) => {
                   this.coleccion = games.games;
+                  this.coleccionFiltrados = this.coleccion
                 },
               });
             }
@@ -53,7 +61,8 @@ export class PageProfileV2Component implements OnInit {
         this.eventService.getEventosById(this.userLogin).subscribe({
           next: (eventos: any) => {
             this.eventos = eventos.data;
-            console.log(eventos);
+            this.eventosFiltrados = this.eventos
+            
           },
         });
         // Creamos un objeto ArrayBuffer a partir del array de bytes
@@ -93,4 +102,20 @@ export class PageProfileV2Component implements OnInit {
     });
   }
   abrirPagina(url: string) {}
+
+  filtrarBusqueda(){
+    this.coleccionFiltrados = this.coleccion.filter(item =>{
+      
+        return ( item.name?.toLowerCase().includes(this.busqueda.toLowerCase())  )
+       
+    })
+  }
+
+  filtrarBusqueda2(){
+    this.eventosFiltrados = this.eventos.filter(item =>{
+      
+        return ( item.titulo?.toLowerCase().includes(this.busqueda2.toLowerCase())  )
+       
+    })
+  }
 }

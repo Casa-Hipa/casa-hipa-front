@@ -16,6 +16,7 @@ import {
 } from '@syncfusion/ej2-angular-richtexteditor';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogDetailsComponent } from './blog-details/blog-details.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [BlogPostComponent, BlogListComponent, BlogDetailsComponent],
@@ -25,6 +26,7 @@ import { BlogDetailsComponent } from './blog-details/blog-details.component';
     NgxEchartsModule,
     RichTextEditorAllModule,
     FormsModule,
+    NgxPaginationModule
   ],
   providers: [
     ToolbarService,

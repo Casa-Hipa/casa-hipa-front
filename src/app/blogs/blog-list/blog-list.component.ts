@@ -14,7 +14,10 @@ import { Router } from '@angular/router';
 export class BlogListComponent implements OnInit {
   public sidebarVisible: boolean = true;
 
+  public currentPage = 1
+  public busqueda = ''
   public entradas = [];
+  public entradasFiltradas = [];
   public checkoutEvent = {} as CheckoutEvent;
   constructor(
     private sidebarService: SidebarService,
@@ -26,6 +29,7 @@ export class BlogListComponent implements OnInit {
     this.eventService.getEntradas().subscribe({
       next: (entradas: any) => {
         this.entradas = entradas.data;
+        this.entradasFiltradas = this.entradas
       },
     });
   }
@@ -53,5 +57,11 @@ export class BlogListComponent implements OnInit {
         alert('error');
       },
     });
+  }
+
+  filtrarBusqueda(){
+this.entradasFiltradas = this.entradas.filter(item =>{
+  return item.titulo.toLowerCase().includes(this.busqueda.toLowerCase())
+})
   }
 }

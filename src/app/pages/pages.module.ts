@@ -23,6 +23,7 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FormsModule } from '@angular/forms';
 import { SuccessPaymentComponent } from '../authentication/success-payment/success-payment.component';
 import { ErrorPaymentComponent } from '../authentication/error-payment/error-payment.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { ErrorPaymentComponent } from '../authentication/error-payment/error-pay
     NgxGalleryModule,
     FormsModule,
     CommonModule,
+    NgxPaginationModule
   ],
   exports: [],
 })

@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { GameDetailComponent } from './game-detail/game-detail.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [UiElementsComponent, SearchComponent, GameDetailComponent],
@@ -17,6 +18,7 @@ import { GameDetailComponent } from './game-detail/game-detail.component';
     NgbModule,
     RouterModule,
     FormsModule,
+    NgxPaginationModule
   ],
 })
 export class UiElementsModule {}

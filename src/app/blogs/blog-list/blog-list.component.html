@@ -19,7 +19,7 @@
 
   <div class="row clearfix">
     <div class="col-lg-8 col-md-12 left-box">
-      <div class="card single_post" *ngFor="let entrada of entradas">
+      <div class="card single_post" *ngFor="let entrada of entradasFiltradas | paginate: {itemsPerPage: 5, currentPage:currentPage, id: 'miTabla'}">
         <div class="body">
           <div class="img-post">
             <!-- <img
@@ -60,23 +60,7 @@
         </div>
       </div>
 
-      <!-- <ul class="pagination pagination-primary">
-        <li class="page-item">
-          <a class="page-link" href="javascript:void(0);">Previous</a>
-        </li>
-        <li class="page-item active">
-          <a class="page-link" href="javascript:void(0);">1</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="javascript:void(0);">2</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="javascript:void(0);">3</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="javascript:void(0);">Next</a>
-        </li>
-      </ul> ver paginacion luego-->
+      <pagination-controls (pageChange)="currentPage = $event" id="miTabla"></pagination-controls>
     </div>
     <div class="col-lg-4 col-md-12 right-box">
       <div class="card">
@@ -87,7 +71,7 @@
                 ><i class="icon-magnifier"></i
               ></span>
             </div>
-            <input type="text" class="form-control" placeholder="Buscar..." />
+            <input type="text" class="form-control" name="busqueda" placeholder="Buscar..." [(ngModel)]="busqueda" (input)="filtrarBusqueda()" />
           </div>
         </div>
       </div>

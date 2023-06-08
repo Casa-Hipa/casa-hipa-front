@@ -52,7 +52,7 @@
                 <div
                   class="card product_item col-lg-3 col-md-3"
                   style="margin: 20px"
-                  *ngFor="let game of games"
+                  *ngFor="let game of games | paginate: {itemsPerPage: 9, currentPage: currentPage, id: 'miTabla'}"
                 >
                   <div class="body">
                     <div class="top-bar">
@@ -82,6 +82,7 @@
                     </div>
                   </div>
                 </div>
+                <pagination-controls (pageChange)="currentPage = $event" id="miTabla"></pagination-controls>
               </div>
             </div>
           </div>

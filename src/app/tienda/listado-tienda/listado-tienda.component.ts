@@ -17,6 +17,7 @@ export class ListadoTiendaComponent implements OnInit {
   public sidebarVisible: boolean = true;
   public games: any[];
   public carrito = [];
+  public currentPage = 1
 
   @ViewChild('miEnlace', { static: true }) miEnlace: ElementRef;
 

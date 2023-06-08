@@ -44,11 +44,18 @@ export class PageProfileComponent implements OnDestroy {
   stock: number = 0;
   precio: number = 0;
   isAdmin: boolean;
+  currentPage = 1
+  currentPage2 = 1
+  busqueda = ''
+  busqueda2 = ''
 
   public coleccionSearch = {} as ColleccionSearch;
   public juegoAborrar = {} as GameSaveCollecction;
   public coleccion = [];
   public storeGames = [];
+
+  public coleccionFiltrados = [];
+  public storeGamesFiltrados = [];
   constructor(
     private sidebarService: SidebarService,
     private cdr: ChangeDetectorRef,
@@ -76,7 +83,7 @@ export class PageProfileComponent implements OnDestroy {
           this.gameService.getJuegosBGAbyID(result.data.stringIds).subscribe({
             next: (games) => {
               this.storeGames = games.games;
-
+              this.storeGamesFiltrados = this.storeGames
               this.storeGames.forEach((element) => {
                 const indice = result.data.data.findIndex(
                   (elemento) => elemento.id_juego == element.id
@@ -95,6 +102,7 @@ export class PageProfileComponent implements OnDestroy {
           this.gameService.getJuegosBGAbyID(result.data).subscribe({
             next: (games) => {
               this.coleccion = games.games;
+              this.coleccionFiltrados = this.coleccion
             },
           });
         }
@@ -310,5 +318,22 @@ export class PageProfileComponent implements OnDestroy {
         });
       },
     });
+  }
+
+
+  filtrarBusqueda(){
+    this.coleccionFiltrados = this.coleccion.filter(item =>{
+      
+        return ( item.name?.toLowerCase().includes(this.busqueda.toLowerCase())  )
+       
+    })
+  }
+
+  filtrarBusqueda2(){
+    this.storeGamesFiltrados = this.storeGames.filter(item =>{
+      
+        return ( item.name?.toLowerCase().includes(this.busqueda2.toLowerCase())  )
+       
+    })
   }
 }
