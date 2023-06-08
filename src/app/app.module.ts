@@ -22,12 +22,14 @@ import { UsersComponent } from './users/users.component';
 import { CalcularEdadPipe } from './pipes/calcular-edad.pipe';
 import { ListadoTiendaComponent } from './tienda/listado-tienda/listado-tienda.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { VentasComponent } from './reportes/ventas/ventas.component';
+import { EventosComponent } from './reportes/eventos/eventos.component';
 
 
 FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin]);
 
 @NgModule({
-  declarations: [AppComponent, UsersComponent, CalcularEdadPipe, ListadoTiendaComponent],
+  declarations: [AppComponent, UsersComponent, CalcularEdadPipe, ListadoTiendaComponent, VentasComponent, EventosComponent],
   imports: [
     BrowserModule,
     ReactiveFormsModule,

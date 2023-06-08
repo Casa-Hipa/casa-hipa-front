@@ -27,6 +27,8 @@ import { UsersComponent } from '../users/users.component';
 import { SuccessPaymentComponent } from '../authentication/success-payment/success-payment.component';
 import { ErrorPaymentComponent } from '../authentication/error-payment/error-payment.component';
 import { ListadoTiendaComponent } from '../tienda/listado-tienda/listado-tienda.component';
+import { VentasComponent } from '../reportes/ventas/ventas.component';
+import { EventosComponent } from '../reportes/eventos/eventos.component';
 
 const routes: Routes = [
   {
@@ -59,6 +61,22 @@ const routes: Routes = [
             path: 'game-detail/:id',
             component: GameDetailComponent,
             data: { title: ':: Casa Hipa :: Games ::' },
+          },
+        ],
+      },
+      {
+        path: 'reports',
+        children: [
+          { path: '', redirectTo: 'reports', pathMatch: 'full' },
+          {
+            path: 'sells',
+            component: VentasComponent,
+            data: { title: ':: Casa Hipa :: Ventas ::' },
+          },
+          {
+            path: 'events',
+            component: EventosComponent,
+            data: { title: ':: Casa Hipa :: Eventos ::' },
           },
         ],
       },

@@ -270,30 +270,31 @@
                 </li>
               </ul>
             </li>
-            <!--
+            
             <li [ngClass]="{ active: currentActiveMenu == 'forms' }">
               <a class="has-arrow" (click)="activeInactiveMenu('forms')"
-                ><i class="icon-pencil"></i> <span>Forms</span></a
+                ><i class="icon-graph"></i> <span>Reportes</span></a
               >
               <ul *ngIf="currentActiveMenu == 'forms'">
                 <li
                   routerLinkActive="active"
                   [routerLinkActiveOptions]="{ exact: true }"
                 >
-                  <a [routerLink]="['/admin/forms/forms-validation']"
-                    >Form Validation</a
+                  <a [routerLink]="['/admin/reports/sells']"
+                    >Reporte de Ventas</a
                   >
                 </li>
                 <li
                   routerLinkActive="active"
                   [routerLinkActiveOptions]="{ exact: true }"
                 >
-                  <a [routerLink]="['/admin/forms/forms-basic']"
-                    >Basic Elements</a
+                  <a [routerLink]="['/admin/reports/events']"
+                    >Reporte de eventos</a
                   >
                 </li>
               </ul>
             </li>
+            <!--
             <li [ngClass]="{ active: currentActiveMenu == 'tables' }">
               <a class="has-arrow" (click)="activeInactiveMenu('tables')"
                 ><i class="icon-tag"></i> <span>Tables</span></a
