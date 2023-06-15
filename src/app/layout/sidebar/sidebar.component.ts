@@ -100,9 +100,10 @@ export class SidebarComponent implements OnDestroy {
   }
 
   transform() {
+    if (this.base64String != undefined) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(
       'data:image/png;base64,' + this.base64String
-    );
+    );}else{return 'assets/profile/user.png'}
   }
   ngOnDestroy() {
     this.ngUnsubscribe.complete();

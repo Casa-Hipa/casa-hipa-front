@@ -25,7 +25,7 @@
             <table class="table m-b-0 table-hover">
               <thead class="thead-light">
                 <tr>
-                  <th>#</th>
+                  
                   <th>Nombre</th>
                   <th>Edad</th>
                   <th>Email</th>
@@ -35,9 +35,7 @@
               </thead>
               <tbody>
                 <tr *ngFor="let user of usuariosFiltrados | paginate:{itemsPerPage:5, currentPage:currentPage, id:'miTabla'}">
-                  <td>
-                    <span class="badge badge-success">Active</span>
-                  </td>
+
                   <td class="project-title">
                     <h6>{{ user.nombre }} {{ user.apellido }}</h6>
                     <small

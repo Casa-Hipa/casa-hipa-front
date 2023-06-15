@@ -10,7 +10,9 @@ export interface Asistente {
 export interface DetalleVenta {
   cantidad: number;
   id_juego: string;
-  precio: number
+  precio: number;
+  id_mecanica: string;
+  nombre_juego: string;
 }
 
 
@@ -18,4 +20,8 @@ export interface DetalleVenta {
 export interface Venta {
   email_usuario: string;
   detalles: DetalleVenta[];
+}
+export interface FechasBarras {
+  fecha_ini: string;
+  fecha_fin: string;
 }

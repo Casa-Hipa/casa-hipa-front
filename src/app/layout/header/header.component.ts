@@ -97,13 +97,15 @@ export class HeaderComponent implements OnInit {
         
         this.objetoVenta.email_usuario = email_usuario
         this.objetoVenta.detalles = []
-        console.log(this.objetoVenta.email_usuario)
+        
         const detalles = this.contarYAgregar(this.carrito)
         detalles.forEach(element => {
           const detalleVenta = {} as DetalleVenta
           detalleVenta.cantidad = element.cantidad
           detalleVenta.id_juego = element.id
           detalleVenta.precio = element.precio
+          detalleVenta.id_mecanica = element.mechanics[0].id
+          detalleVenta.nombre_juego = element.name
 
           this.objetoVenta.detalles.push(detalleVenta)
         });

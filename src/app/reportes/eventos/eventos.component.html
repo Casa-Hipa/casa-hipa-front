@@ -1,1 +1,236 @@
-<p>eventos works!</p>
+<div class="block-header">
+    <div class="row">
+      <div class="col-lg-5 col-md-8 col-sm-12">
+        <h2>
+          <a
+            href="javascript:void(0);"
+            class="btn btn-xs btn-link btn-toggle-fullwidth"
+            (click)="toggleFullWidth()"
+          >
+            <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
+            <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
+          </a>
+          Reporte de Eventos
+        </h2>
+      </div>
+    </div>
+  </div>
+  <div class="row clearfix">   
+  
+          <div class="card col-lg-3 col-md-6">
+              <div class="header">
+                  <h2>Total de ganancias por grupo de edades</h2>                
+              </div>
+              <div class="body text-center">
+                  <h4 class="margin-0">Total Ganancias</h4>
+                  <h6 class="m-b-0">{{totalMonto | currency}}</h6>
+                  <div echarts [options]="doghnutChart" [autoResize]="true" class="echart-doughnut mr-auto ml-auto"></div>
+                  
+                  
+            
+              </div>
+            </div><div class="card col-lg-8 col-md-6 ml-3">
+                <div class="card">
+                    <div class="header">
+                        <h2>Ganancia por meses</h2> 
+                        
+                        <div class="row mt-3">
+                            <label class="form-label" for="año">Año:</label>
+                            <input #anio  name="año" type="number" class="form-control col-2 ml-3" maxlength="4" >
+                            <button class="btn btn-primary ml-3" (click)="buscarChart(anio.value)">Buscar</button>
+                        </div>                       
+                    </div>
+
+                    <div class="body">
+                        <div id="chart-top-products" class="chartist">
+                            <div echarts [options]="chartOptions" [autoResize]="true" class="fix-h-292"></div>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+            <!-- <div class="card col-lg-8 col-md-12 ml-4" >
+              <div class="card">
+                <div class="header">
+                    <h2>Juegos con bajo stock</h2>                  
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-hover m-b-0">
+                          <thead>
+                            <th>Status</th>
+                            <th>Titulo</th>
+                            <th>Stock</th>
+                          </thead>
+                            <tbody>
+                                <tr *ngFor="let juego of sinStock | paginate:{itemsPerPage:4, currentPage:currentPage, id:'miTabla2'}">
+                                    <th><i [ngClass]="juego.stock > 5 ? 'fa fa-circle text-warning' : 'fa fa-circle text-danger'"></i></th>
+                                    
+                                    
+                                    <td>{{juego.nombre}}</td>
+                                    <td><span>{{juego.stock}}</span></td>
+                                    
+                                </tr>
+                            </tbody>
+                            
+                        </table>
+                        <pagination-controls (pageChange)="currentPage = $event" id="miTabla2"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+            </div> -->
+  </div>
+  <!-- <div class="row clearfix">
+    <div class="card col-lg-12 col-md-12 ml-12" >
+      <div class="header">
+        <h2>Ventas por Periodos</h2>
+     
+    </div>
+    <div class="body">
+        <div class="row">
+            <div class="col">
+              <label for="fechaInicio" class="form-label">Fecha Inicio</label>
+              <input type="date" id="fechaInicio" class="form-control" #fechaInicioInput>
+            </div>
+            <div class="col">
+              <label for="fechaFin" class="form-label">Fecha Fin</label>
+              <input type="date" id="fechaFin" class="form-control" #fechaFinInput>
+            </div>
+            <div class="col">
+                
+              <button type="button" class="btn btn-primary mt-3" id="boton" (click)="buscarBarras(fechaInicioInput.value, fechaFinInput.value)">Buscar</button>
+            </div>
+          </div>   
+        <div id="chart-top-products" class="chartist">
+            <div echarts [options]="stackedBarChart" [autoResize]="true" class="fix-h-292"></div>
+        </div>
+    </div>
+    </div>
+  </div>-->
+  <div class="row clearfix">
+    <div class="col-lg-12 col-md-12">
+      <div class="header">
+        <h2>Eventos</h2>   
+    </div>
+      <div class="row">
+        <div class="col">
+          <label for="fechainicio" class="form-label">Fecha Inicio</label>
+          <input type="date" id="fechainicio" class="form-control mb-3" #fechainicio>
+        </div>
+        <div class="col">
+          <label for="fechafin" class="form-label">Fecha Fin</label>
+          <input type="date" id="fechafin" class="form-control mb-3" #fechafin>
+        </div>
+        <div class="col">
+            
+          <button type="button" class="btn btn-primary mt-4" id="boton" (click)="filtrarBusqueda(fechainicio.value, fechafin.value)">Buscar</button>
+        </div>
+      </div>  
+      
+      <div class="card">
+        <div class="body project_report">
+          <div class="table-responsive">
+            <table class="table m-b-0 table-hover">
+              <thead class="thead-light">
+                <tr>
+                  <th>Titulo</th>
+                  <th>Fecha</th>
+                  <th>Precio</th>
+                  <th>Asistentes</th>
+                  
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let juego of asistenciasFiltradas | paginate:{itemsPerPage:10, currentPage:currentPage, id:'miTabla'}">
+                  <td class="project-title">
+                    <h6>
+                      <a
+                        href="javascript:void(0);"
+                        
+                        >{{juego.titulo}}</a
+                      >
+                    </h6>
+                  </td>
+  
+                  <td>
+                    <h6>{{ juego.fecha_inicio | date : 'dd/MM/YYYY'}}</h6>
+                  </td>
+                  <td>
+                    <h6>{{ juego.precio | currency }}</h6>
+                  </td>
+                  <td>
+                    <small>{{juego.asistentes}} de {{juego.limite_asistentes}}</small>
+                    <div class="progress progress-xs progress-transparent custom-color-blue">
+                        <div class="progress-bar" data-transitiongoal="87" [ngStyle]="{'width.%': juego.porcentajeAsistentes}"></div>
+                    </div>
+                  </td>
+
+                  <td class="project-actions">
+                    <a
+                      href="javascript:void(0);"
+                      (click)="openModal(content, 'lg', juego.id_evento)"
+                      class="btn btn-outline-secondary mr-1"
+                      ><i class="icon-eye"></i
+                    ></a>
+                  </td>
+                </tr>
+                
+              </tbody>
+            </table>
+            <pagination-controls (pageChange)="currentPage = $event" id="miTabla"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Detalle Asistentes</h4>
+    </div>
+    <div class="modal-body">
+      <div class="card">
+        <div class="body">
+           <div class="table-responsive">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th >Nombre</th>
+                  <th >Email</th>
+                  <th class="text-right">Fecha Nacimiento</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of detalleAsistencias[0].eventos_usuarios; let i = index">
+                  <td class="col-md-3">{{ item.usuarios?.nombre }} {{ item.usuarios?.apellido }}</td>
+                  <td class="col-md-3">
+                    {{ item.email_usuario }}
+                  </td>
+                  <td class="col-md-6 text-right">{{ item.usuarios.fecha_nacimiento | date : 'dd/MM/YYYY'}}</td>
+                  
+  
+                </tr>  
+
+              </tbody>
+            </table>
+          </div>
+          <div class="row clearfix">
+            <div class="col-lg-8 col-md-12">
+              <p class="mb-0">
+                
+              </p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-danger"
+        (click)="modal.dismiss('Close click')"
+      >
+        Cerrar
+      </button>
+    </div>
+  </ng-template> 

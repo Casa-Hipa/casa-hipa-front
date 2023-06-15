@@ -7,6 +7,7 @@ import {
   GameSearch,
   UpdateStore,
 } from '../interfaces/games';
+import { FechasBarras } from '../interfaces/checkoutEvent';
 @Injectable({
   providedIn: 'root',
 })
@@ -49,6 +50,12 @@ export class GamesService {
     );
   }
 
+  getSinStock(): Observable<any> {
+    return this._http.get<any>(
+      `http://localhost:3000/juegos/sinStock/`
+    );
+  }
+
   getJuegosColeccionStore(): Observable<any> {
     return this._http.get<any>(`http://localhost:3000/store`);
   }
@@ -69,5 +76,28 @@ export class GamesService {
 
   createFactura(factura: any): Observable<any> {
     return this._http.post<any>(`http://localhost:3000/store/createFactura`, factura);
+  }
+
+  getFacturas(): Observable<any> {
+    return this._http.get<any>(`http://localhost:3000/store/facturas`);
+  }
+  getMechanics(): Observable<any> {
+    return this._http.get<any>(`https://api.boardgameatlas.com/api/game/mechanics?pretty=true&client_id=JLBr5npPhV`);
+  }
+
+  getTorta(): Observable<any> {
+    return this._http.get<any>(`http://localhost:3000/store/torta`);
+  }
+  getTortaEdades(): Observable<any> {
+    return this._http.get<any>(`http://localhost:3000/store/tortaEdades`);
+  }
+  getBarrasVentas(fechasBarra:FechasBarras): Observable<any> {
+    return this._http.post<any>(`http://localhost:3000/store/barrasVentas`,fechasBarra);
+  }
+  getAsistencias(): Observable<any> {
+    return this._http.get<any>(`http://localhost:3000/store/asistencias`);
+  }
+  getChartAsistencia(fechasBarra:FechasBarras): Observable<any> {
+    return this._http.post<any>(`http://localhost:3000/store/chartAsistencia`,fechasBarra);
   }
 }
