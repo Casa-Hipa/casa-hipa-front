@@ -6,16 +6,7 @@ import { SearchComponent } from '../games/search/search.component';
 import { PageBlankComponent } from '../pages/page-blank/page-blank.component';
 import { PageProfileComponent } from '../pages/page-profile/page-profile.component';
 import { PageProfileV2Component } from '../pages/page-profile-v2/page-profile-v2.component';
-import { PageGalleryComponent } from '../pages/page-gallery/page-gallery.component';
-import { PageTimelineComponent } from '../pages/page-timeline/page-timeline.component';
-import { PagePricingComponent } from '../pages/page-pricing/page-pricing.component';
-import { PageInvoicesComponent } from '../pages/page-invoices/page-invoices.component';
-import { PageInvoicesV2Component } from '../pages/page-invoices-v2/page-invoices-v2.component';
-import { PageSearchResultsComponent } from '../pages/page-search-results/page-search-results.component';
-import { PageHelperClassComponent } from '../pages/page-helper-class/page-helper-class.component';
-import { PageTeamsBoardComponent } from '../pages/page-teams-board/page-teams-board.component';
-import { PageProjectsListComponent } from '../pages/page-projects-list/page-projects-list.component';
-import { PageTestimonialsComponent } from '../pages/page-testimonials/page-testimonials.component';
+
 import { PageFaqComponent } from '../pages/page-faq/page-faq.component';
 import { FormsValidationComponent } from '../form/forms-validation/forms-validation.component';
 import { BlogListComponent } from '../blogs/blog-list/blog-list.component';
@@ -120,61 +111,8 @@ const routes: Routes = [
             component: PageProfileV2Component,
             data: { title: ':: Casa Hipa :: Pages :: Profile - V2 ::' },
           },
-          {
-            path: 'page-gallery',
-            component: PageGalleryComponent,
-            data: { title: ':: Casa Hipa :: Pages :: Gallery ::' },
-          },
-          {
-            path: 'page-timeline',
-            component: PageTimelineComponent,
-            data: { title: ':: Casa Hipa :: Pages :: Timeline ::' },
-          },
-          {
-            path: 'page-pricing',
-            component: PagePricingComponent,
-            data: { title: ':: Casa Hipa :: Pages :: Pricing ::' },
-          },
-          {
-            path: 'page-invoices',
-            component: PageInvoicesComponent,
-            data: { title: ':: Casa Hipa :: Pages :: Invoices ::' },
-          },
-          {
-            path: 'page-invoices2',
-            component: PageInvoicesV2Component,
-            data: { title: ':: Casa Hipa :: Pages :: Invoices - V2 ::' },
-          },
-          {
-            path: 'page-search-results',
-            component: PageSearchResultsComponent,
-            data: { title: ':: Casa Hipa :: Pages :: Search Results ::' },
-          },
-          {
-            path: 'page-helper-class',
-            component: PageHelperClassComponent,
-            data: { title: ':: Casa Hipa :: Pages :: Classes ::' },
-          },
-          {
-            path: 'page-teams-board',
-            component: PageTeamsBoardComponent,
-            data: { title: ':: Casa Hipa :: Pages :: Team ::' },
-          },
-          {
-            path: 'page-projects-list',
-            component: PageProjectsListComponent,
-            data: { title: ':: Casa Hipa :: Pages :: Projects ::' },
-          },
-          {
-            path: 'page-maintenance',
-            component: PageProjectsListComponent,
-            data: { title: ':: Casa Hipa :: Pages :: Maintenance ::' },
-          },
-          {
-            path: 'page-testimonials',
-            component: PageTestimonialsComponent,
-            data: { title: ':: Casa Hipa :: Pages :: Testimonials ::' },
-          },
+
+
           {
             path: 'page-faq',
             component: PageFaqComponent,

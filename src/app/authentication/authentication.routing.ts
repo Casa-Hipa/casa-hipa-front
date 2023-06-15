@@ -6,9 +6,6 @@ import { PageLockscreenComponent } from './page-lockscreen/page-lockscreen.compo
 import { PageForgotPasswordComponent } from './page-forgot-password/page-forgot-password.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PageForbiddonErrorComponent } from './page-forbiddon-error/page-forbiddon-error.component';
-import { PageIsErrorComponent } from './page-is-error/page-is-error.component';
-import { PageTryLaterComponent } from './page-try-later/page-try-later.component';
-import { PageMaintananceComponent } from '../pages/page-maintanance/page-maintanance.component';
 import { ErrorPaymentComponent } from './error-payment/error-payment.component';
 import { SuccessPaymentComponent } from './success-payment/success-payment.component';
 import { SuccessSellComponent } from './success-sell/success-sell.component';
@@ -64,21 +61,7 @@ const routes: Routes = [
         component: PageForbiddonErrorComponent,
         data: { title: 'Page-403 :: Casa Hipa' },
       },
-      {
-        path: 'page-500',
-        component: PageIsErrorComponent,
-        data: { title: 'Page-500 :: Casa Hipa' },
-      },
-      {
-        path: 'page-503',
-        component: PageTryLaterComponent,
-        data: { title: 'Page-503 :: Casa Hipa' },
-      },
-      {
-        path: 'page-maintanance',
-        component: PageMaintananceComponent,
-        data: { title: 'maintanance :: Casa Hipa' },
-      },
+
     ],
   },
 ];

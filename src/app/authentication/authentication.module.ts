@@ -8,8 +8,6 @@ import { PageLockscreenComponent } from './page-lockscreen/page-lockscreen.compo
 import { PageForgotPasswordComponent } from './page-forgot-password/page-forgot-password.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PageForbiddonErrorComponent } from './page-forbiddon-error/page-forbiddon-error.component';
-import { PageIsErrorComponent } from './page-is-error/page-is-error.component';
-import { PageTryLaterComponent } from './page-try-later/page-try-later.component';
 import { PagesModule } from '../pages/pages.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,9 +21,8 @@ import { SuccessSellComponent } from './success-sell/success-sell.component';
     PageLockscreenComponent,
     PageForgotPasswordComponent,
     PageNotFoundComponent,
-    PageForbiddonErrorComponent,
-    PageIsErrorComponent,
-    PageTryLaterComponent,
+    PageForbiddonErrorComponent,    
+    
     SuccessSellComponent,
   ],
   imports: [
